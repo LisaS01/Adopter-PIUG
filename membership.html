@@ -204,12 +204,13 @@
                     <a class="btn btn-link" href="">Terms & Condition</a>
                     <a class="btn btn-link" href="">Support</a>
                 </div>
-                <div class="col-lg-3 col-md-6">
-                    <h5 class="text-light mb-4">Newsletter</h5>
-                    <p>Subscribe to keep up to date with the news.</p>
-                    <div class="position-relative mx-auto" style="max-width: 400px;">
-                        <input class="form-control border-0 w-100 py-3 ps-4 pe-5" type="text" placeholder="Your email">
-                        <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>
+               <div class="col-lg-3 col-md-6">
+    <h5 class="text-light mb-4">Newsletter</h5>
+    <p>Subscribe to keep up to date with the news.</p>
+    <div class="position-relative mx-auto" style="max-width: 400px;">
+        <input id="emailInput" class="form-control border-0 w-100 py-3 ps-4 pe-5" type="email" placeholder="Your email">
+        <button id="signupButton" type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>
+        <div id="error-message" class="text-danger position-absolute top-50 start-0 mt-2 ms-4" style="display: none;">Invalid email address</div>
                     </div>
                 </div>
             </div>
@@ -250,6 +251,29 @@
     <script src="lib/counterup/counterup.min.js"></script>
     <script src="lib/owlcarousel/owl.carousel.min.js"></script>
     <script src="lib/lightbox/js/lightbox.min.js"></script>
+
+<!-- Scriptul pentru validare și acțiuni buton SignUp -->
+<script>
+    $(document).ready(function() {
+        $('#signupButton').on('click', function() {
+            var email = $('#emailInput').val();
+            if (isValidEmail(email)) {
+                // Aici poți adăuga logica de abonare sau alte acțiuni dorite
+                console.log('Email valid. Abonare...');
+                $('#error-message').hide();
+            } else {
+                // Afiseaza un mesaj de eroare
+                $('#error-message').show();
+            }
+        });
+
+        // Funcție pentru a valida adresa de email
+        function isValidEmail(email) {
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+    });
+</script>
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
